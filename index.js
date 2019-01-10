@@ -7,7 +7,7 @@ getClient = () => {
         host: Constants.dbHost,
         database: Constants.dbName,
         password: Constants.dbPass,
-        port: Constants.dbPort,
+        port: Constants.dbPort
       });
 
     return client;
@@ -63,6 +63,10 @@ poolPromiseConnection = async() => {
         database: Constants.dbName,
         password: Constants.dbPass,
         port: Constants.dbPort,
+        max: 5,
+        min: 0,
+        connectionTimeoutMillis: 30000,
+        idleTimeoutMillis: 10000
       });
     
     pool.connect().then(client => {
@@ -76,13 +80,18 @@ poolPromiseConnection = async() => {
 };
 
 module.exports.handler = (event, context, callback) => {
+    console.log('Connecting to DB via Plain PG Connection with callback');
     plainConnection(callback);
 };
 
 module.exports.asyncHandler = async (event) => {
-    return await asyncConnection();
+    console.log('Connecting to DB via Plain PG Connection in async mode');
+    await asyncConnection();
+    console.log('Execution done for index.asyncHandler for async connection');
 };
 
 module.exports.poolPromiseHandler = async (event) => {
-    return await poolPromiseConnection();
+    console.log('Connecting to DB via PG Pool in Promise mode');
+    await poolPromiseConnection();
+    console.log('Execution done for index.poolPromiseHandler for async connection');
 }

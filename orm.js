@@ -25,5 +25,6 @@ ormConnection = (callback) => {
 };
 
 module.exports.handler = (event, context, callback) => {
+    console.log('Connecting to DB via Sequelize ORM pool');
     ormConnection(callback);
 };
