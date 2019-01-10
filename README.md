@@ -1,2 +1,2 @@
 # PGNodeExample
-A sample node.js application which connects PostgreSQL hosted on RDS
+A sample node.js application which connects PostgreSQL hosted on RDS.
