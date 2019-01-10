@@ -1,4 +1,4 @@
-const { Client } = require('pg');
+const { Pool, Client } = require('pg');
 const Constants = require('./constants.js');
 
 getClient = () => {
@@ -56,6 +56,25 @@ asyncConnection = async() => {
     return response;
 };
 
+poolPromiseConnection = async() => {
+    const pool = new Pool({
+        user: Constants.dbUser,
+        host: Constants.dbHost,
+        database: Constants.dbName,
+        password: Constants.dbPass,
+        port: Constants.dbPort,
+      });
+    
+    pool.connect().then(client => {
+        client.release()
+        console.log('Successfully connected');
+        response = sendRes(200, 'Successfully connected');
+    }).catch(err => {
+        console.log(`Connection error ${err.stack}`);
+        response = sendRes(401, `Connection error ${err.stack}`);
+    });
+};
+
 module.exports.handler = (event, context, callback) => {
     plainConnection(callback);
 };
@@ -63,3 +82,7 @@ module.exports.handler = (event, context, callback) => {
 module.exports.asyncHandler = async (event) => {
     return await asyncConnection();
 };
+
+module.exports.poolPromiseHandler = async (event) => {
+    return await poolPromiseConnection();
+}
