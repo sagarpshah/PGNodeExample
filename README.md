@@ -1,6 +1,8 @@
 # PGNodeExample
 A sample node.js application which connects PostgreSQL hosted on RDS in 4 different ways.
 
+Install Node.js® from https://nodejs.org/en/
+
 -- constant.js
     It contains the DB credentials. Replace it with valid data.
 
@@ -9,7 +11,7 @@ A sample node.js application which connects PostgreSQL hosted on RDS in 4 differ
     All 3 methods' syntax adheres AWS Lambda protocol.
 
 -- orm.js
-    It contains method to connect to PostgreSQL DB via Sequelize ORM. Here is the official documentation of Sequelize -- http://docs.sequelizejs.com/manual/installation/getting-started.html.
+    It contains method to connect to PostgreSQL DB via Sequelize ORM. Here is the official documentation of Sequelize -- http://docs.sequelizejs.com/.
     This method can also be used in conjuction with AWS Lambda.
 
 -- invoke.js

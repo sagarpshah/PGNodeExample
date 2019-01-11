@@ -3,20 +3,20 @@
 const index = require('./index.js');
 const orm = require('./orm.js');
 
-// Method 1 //
+// // Method 1 //
 index.handler({}, {}, (error, response) => {
     console.log(response);
-    console.log('Execution done for index.handler for plain connection with callback');
+    // console.log('Execution done for index.handler for plain connection with callback');
 });
 
 // Method 2 //
 index.asyncHandler((response) => {
-    // This response will be used in API Gateway and no output will be printed here.
+    // This is server response and no output will be printed here.
 });
 
 // Method 3 //
 index.poolPromiseHandler((response) => {
-    // This response will be used in API Gateway and no output will be printed here.
+    // This is server response and no output will be printed here.
 });
 
 
