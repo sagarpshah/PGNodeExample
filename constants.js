@@ -3,7 +3,12 @@ module.exports = Object.freeze({
     dbUser: 'username',
     dbPass: 'password',
     dbHost: 'instance.cqcskh0ghf5e.ap-south-1.rds.amazonaws.com',
-    dbPort: '5432'
+    dbPort: '5432',
+
+    poolMaxSize: 5,
+    poolMinSize: 0,
+    poolAcquireTimeout: 30000,
+    poolIdleTimeout: 10000
 });
 
 /*

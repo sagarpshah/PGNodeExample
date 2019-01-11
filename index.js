@@ -63,10 +63,11 @@ poolPromiseConnection = async() => {
         database: Constants.dbName,
         password: Constants.dbPass,
         port: Constants.dbPort,
-        max: 5,
-        min: 0,
-        connectionTimeoutMillis: 30000,
-        idleTimeoutMillis: 10000
+        
+        max: Constants.poolMaxSize,
+        min: Constants.poolMinSize,
+        connectionTimeoutMillis: Constants.poolAcquireTimeout,
+        idleTimeoutMillis: Constants.poolIdleTimeout
       });
     
     pool.connect().then(client => {
